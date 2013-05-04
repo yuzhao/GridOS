@@ -20,6 +20,7 @@
 #define DRV_NAME		"8139cp"
 static int debug = -1;
 
+//TODO
 #define ____cacheline_aligned __attribute__((__aligned__(1<<6)))
 
 #define CP_DEF_MSG_ENABLE	(NETIF_MSG_DRV		| \

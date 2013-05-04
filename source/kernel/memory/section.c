@@ -68,9 +68,8 @@ static struct cl_object_type section_type = {
 	.free_space	= free_space,
 };
 
-struct ko_section *ks_create(struct ko_process *where, unsigned long type, unsigned long base, unsigned long size, ...)
+struct ko_section *ks_create(struct ko_process *where, unsigned long type, unsigned long base, size_t size)
 {
-	va_list list;
 	struct ko_section *p;
 	
 	if (size == 0)
@@ -80,21 +79,12 @@ struct ko_section *ks_create(struct ko_process *where, unsigned long type, unsig
 	if (!p)
 		goto err;
 	
-	p->node.size = size;
-	p->node.start = base;
+	p->type 	= type;
+	p->node.size 	= size;
+	p->node.start 	= base;
 	if (km_vm_create(where, &p->node) == false)
 		goto err1;
 	
-	va_start(list, size);
-	switch (type & KS_TYPE_MASK)
-	{
-		case KS_TYPE_DEVICE:
-			p->priv.phy.base = va_arg(list, u64);
-			break;
-		default:
-			break;
-	}
-	va_end(list);
 	return p;
 	
 err1:

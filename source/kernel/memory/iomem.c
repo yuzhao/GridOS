@@ -23,7 +23,7 @@ void *km_map_physical(phy_t physical, size_t size, unsigned int flags)
 {
 	struct ko_section *ks;
 	
-	ks = ks_create(kp_get_system(), KS_TYPE_DEVICE, 0, size, physical);
+	ks = ks_create(kp_get_system(), KS_TYPE_DEVICE, 0, size);
 	if (!ks)
 		goto err;
 	printk("km_map_physical got virtual start = %p, size = %d, mapping physical...", ks->node.start, ks->node.size);

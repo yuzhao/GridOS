@@ -3,7 +3,7 @@
  *   See the license.txt at the root directory of this project for the copyright information about this file and project.
  *
  *   Wuxin
- *   å†…å­˜ç®¡ç†
+ *   ÄÚ´æ¹ÜÀí
  */
 #ifndef KE_SECTION_H
 #define KE_SECTION_H
@@ -32,7 +32,7 @@ struct ko_section
 	} priv;
 };
 
-struct ko_section *ks_create(struct ko_process *where, unsigned long type, unsigned long base, unsigned long size,...);
+struct ko_section *ks_create(struct ko_process *where, unsigned long type, unsigned long base, unsigned long size);
 void ks_close(struct ko_section *ks);
 void ks_init();
 
